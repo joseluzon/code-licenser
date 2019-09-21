@@ -29,16 +29,17 @@ int main(int argc, char* argv[])
 
     if (argc < 4)
     {
-        std::cout << "Usage : code-licenser <path-to-license> <path-to-license-file> <source-code-comment-string>" <<  std::endl;
+        std::cout << "Usage : code-licenser <path-to-license> <path-to-license-file> <source-code-comment-string> <file-extension-regex>" <<  std::endl;
     }
     else
     {
         std::string path(argv[1]);
         std::string licPath(argv[2]);
         std::string commentStr(argv[3]);
+        std::string fileExtension(argv[4]);
 
         jluzonm::codelicenser::CodeLicenser cl;    
-        cl.license(path, licPath, commentStr);
+        cl.license(path, licPath, commentStr, fileExtension);
     }
     
     return EXIT_SUCCESS;

@@ -29,7 +29,7 @@ public:
     CodeLicenser();
     ~CodeLicenser();
 
-    bool license(const std::string &path, const std::string &licPath, const std::string& comment) noexcept;
+    bool license(const std::string &path, const std::string &licPath, const std::string &comment, const std::string &fileExtension) noexcept;
 
 private:
     // hidden:
@@ -39,6 +39,7 @@ private:
 
     std::string m_currentLicenseTxt;
     std::string m_currentComment;
+    std::string m_currentFileExtension;
 
     bool loadLicense(const std::filesystem::path &licPath);
 

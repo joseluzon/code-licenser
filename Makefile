@@ -9,7 +9,7 @@ LIB		:= lib
 LIBRARIES	:= -lstdc++fs
 EXECUTABLE	:= code-licenser
 EXECUTABLE_DBG	:= code-licenser.dbg
-ARGS		:= /media/sf_jluzonm/CODIGO/jluzoncpp
+ARGS		:= /path-to-code license-header.txt "//" "c|cpp|h|hpp"
 
 
 all: $(BIN)/$(EXECUTABLE)
@@ -18,7 +18,7 @@ debug: $(BIN)/$(EXECUTABLE_DBG)
 
 run: clean all
 	clear
-	./$(BIN)/$(EXECUTABLE)
+	./$(BIN)/$(EXECUTABLE) $(ARGS)
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
 	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)

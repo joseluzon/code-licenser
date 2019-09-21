@@ -31,14 +31,16 @@ CodeLicenser::~CodeLicenser()
 {
 }
 
-bool CodeLicenser::license(const std::string& pathStr, const std::string& licPathStr, const std::string& comment) noexcept
+bool CodeLicenser::license(const std::string &pathStr, const std::string &licPathStr, const std::string &comment, const std::string &fileExtension) noexcept
 {
     m_currentComment = comment;
+    m_currentFileExtension = fileExtension;
 
     std::filesystem::path thePath(pathStr);
     std::filesystem::path licPath(licPathStr);
 
     std::cout << "Code Licenser started at : " << thePath << std::endl;
+    std::cout << "File extensions : " << m_currentFileExtension << std::endl;
 
     if ( !std::filesystem::exists(thePath) )
     {
@@ -126,7 +128,7 @@ bool CodeLicenser::licenseFile(const std::filesystem::path& filePath)
     bool fileLicensed = false;
 
     // TODO: make file extensions parameterizable
-    std::regex fileFiler(".+\\.(cpp|c|hpp|h)");
+    std::regex fileFiler(".+\\.(" + m_currentFileExtension + ")");
 
     std::cout << "Licensing file : " << filePath << "... ";
 
